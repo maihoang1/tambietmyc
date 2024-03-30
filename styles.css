@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+}
+body {
+  font-family: "Asap", sans-serif;
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+  background: linear-gradient(
+    to bottom,
+    hsl(200deg, 80%, 55%),
+    hsl(200deg, 80%, 80%),
+    hsl(200deg, 80%, 80%),
+    hsl(230deg, 80%, 80%),
+    hsl(260deg, 80%, 80%),
+    hsl(290deg, 80%, 80%),
+    hsl(320deg, 80%, 80%),
+    hsl(340deg, 80%, 80%),
+    hsl(340deg, 80%, 70%) 100%
+  );
+  color: black;
+  font-size: clamp(13px, 5.5vw, 30px);
+}
+main {
+  position: relative;
+  mix-blend-mode: overlay;
+}
+section {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+#cloud div::before,
+#cloud div::after {
+  content: "";
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url(https://raw.githubusercontent.com/happy358/misc/main/image/cloud_X.png);
+
+  background-repeat: repeat-x;
+  animation: cloud var(--duration) linear infinite forwards;
+
+  --posX: right;
+  --duration: 15s;
+  --lowHeight: 20vh;
+  --highHeight: 90vh;
+  --layerNum: 4;
+  --index: 0;
+  --opacity: 0.5;
+  --moveX: 300px;
+
+  animation-delay: calc(
+    (var(--duration) / var(--layerNum)) * var(--index) * -1
+  );
+  opacity: 0;
+}
+#cloud div::before {
+  --index: 0;
+}
+#cloud div::after {
+  --index: 2;
+  transform: scale3d(-1, 1, 1); /*左右反転*/
+}
+#cloud div#cloud_layer2::before,
+#cloud div#cloud_layer2::after {
+  background-image: url(https://raw.githubusercontent.com/happy358/misc/main/image/cloud.png);
+}
+#cloud div#cloud_layer2::before {
+  --index: 3;
+}
+#cloud div#cloud_layer2::after {
+  --index: 1;
+}
+
+.arrows {
+  width: auto;
+  height: auto;
+  position: absolute;
+  bottom: 0.5rem;
+  text-align: center;
+  mix-blend-mode: overlay;
+}
+.arrows div {
+  --arrowSize: 1.3rem;
+  --arrowColor: currentColor;
+
+  width: var(--arrowSize);
+  height: var(--arrowSize);
+  margin: calc(var(--arrowSize) * -1.5) 0;
+  background: transparent;
+  border: calc(var(--arrowSize) * 0.11) solid;
+  border-color: transparent transparent var(--arrowColor) var(--arrowColor);
+  transform: rotate(-45deg);
+  animation: arrow 2s infinite linear;
+}
+@keyframes arrow {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.arrows div:nth-of-type(3) {
+  animation-delay: -0.8s;
+}
+.arrows div:nth-of-type(2) {
+  animation-delay: -0.4s;
+}
+.arrows div:nth-of-type(1) {
+  animation-delay: 0s;
+}
+
+@keyframes cloud {
+  0% {
+    opacity: 0;
+    background-position: var(--posX) var(--moveX) bottom
+      calc(-1 * var(--lowHeight));
+    background-size: calc(1 * var(--lowHeight)) var(--lowHeight);
+  }
+  5% {
+    opacity: var(--opacity);
+  }
+  80% {
+    opacity: var(--opacity);
+  }
+  100% {
+    opacity: 0;
+    background-position: var(--posX) bottom;
+    background-size: calc(3 * var(--highHeight)) var(--highHeight);
+  }
+}
+.transparent-button {
+   
+    cursor: pointer; /* Con trỏ khi di chuyển qua button */
+  }
+  .hidden {
+    opacity: 0;
+    font-family: 'Sacramento', cursive;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: none;
+    color: #ff00ff;
+    font-size: 18px;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --index: calc(1vw + 1vh);
+    --transition: cubic-bezier(.1, .7, 0, 1);
+}
+
+body{
+    background-color: #141414;
+}
+
+#img1{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.items{
+    display: flex;
+    gap: 0.4rem;
+    perspective: calc(var(--index) * 35);
+}
+
+.item{
+    width: calc(var(--index) * 3);
+    height: calc(var(--index) * 12);
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    filter: grayscale(1) brightness(.5);
+    transition: transform 1.25s var(--transition), filter 3s var(--transition), width 1.25s var(--transition);
+    will-change: transform, filter, rotateY, width;
+}
+
+.item::before, .item::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    right: calc(var(--index) * -1);
+}
+
+.item::after{
+    left: calc(var(--index) * -1);
+}
+
+.items .item:hover{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 10));
+}
+
+/*Right*/
+
+.items .item:hover + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(35deg);
+    z-index: -1;
+}
+
+.items .item:hover + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(40deg);
+    z-index: -2;
+}
+
+.items .item:hover + * + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5)) rotateY(30deg);
+    z-index: -3;
+}
+
+.items .item:hover + * + * + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6)) rotateY(15deg);
+    z-index: -4;
+}
+
+
+/*Left*/
+
+.items .item:has( + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(-35deg);
+}
+
+.items .item:has( + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(-40deg);
+}
+
+.items .item:has( + * + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5)) rotateY(-30deg);
+}
+
+.items .item:has( + * + * + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6)) rotateY(-15deg);
+}
+
+.items .item:active, .items .item:focus {
+	width: 28vw;
+	filter: inherit;
+	z-index: 100;
+	transform: translateZ(calc(var(--index) * 10));
+    margin: 0 .45vw;
+}
+.last-line {
+    font-size: 24px; /* Cỡ chữ lớn hơn */
+  }

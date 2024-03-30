@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gửi Giang Ngô</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <iframe id="myVideo" width="560" height="315" src="https://www.youtube.com/embed/sJ7jGL5PaCs?si=Oy3faMAnHpHfG_8g&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div class="text-container">
+        <p id="animated-text" class="hidden">Chúc bạn thượng lộ bình an, gặp nhiều may mắn trên con đường sắp tới. Mình tin tưởng rằng bạn sẽ thành công và đạt được những điều mà bạn mong muốn. Hãy luôn giữ liên lạc và cập nhật cho mình về cuộc sống của bạn nhé. Mình sẽ luôn dõi theo và ủng hộ bạn.</p>
+      </div>
+    <button class="transparent-button" id="start"style="display: none">Click me!</button>
+<canvas id='canvas'></canvas>
+<div id='cloud'>
+  <div id='cloud_layer1'></div>
+  <div id='cloud_layer2'></div>
+</div>
+<div class="wrapper" id="img1">
+    <div class="items" id="img">
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/428241853_1179843216343482_6608166042774881242_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFRlVfX0_PciwPDT8U7eaB_PVH6O17XKTc9Ufo7XtcpN1X9YoKKvtmmG0JgpabEQu7i0kW0Lu7YV2An2F3LNBzo&_nc_ohc=Zt9Suy3FFH0AX_ZMCQ1&_nc_ht=scontent.fhan2-3.fna&oh=00_AfA8PU6yOxVPRFycOc-w6Xe6g5gfP0uqV7UvyYJWr1mh0w&oe=660DBA6A)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/433020024_739613691295011_6976357265008050371_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEvj2ddpcFjbMqfpWO-FkcnsX3Ujsi2OeCxfdSOyLY54CeXy_nD2GOw6LkV8mqNRjvhBVORRtc5GiaNOA-L6wlY&_nc_ohc=Lg20QwekXVIAX8257ps&_nc_ht=scontent.fhan2-4.fna&oh=03_AdQqtuVDfm9xJHGF_rh6j7Xg9PI0ON-IJB8cdPT_JHFXOA&oe=662F81C3)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan20-1.fna.fbcdn.net/v/t1.15752-9/434003156_942447380586481_6635367707264978117_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFuoiiNe-Ybc3T2qwcm8Y2i7O3Mh1byI6Ps7cyHVvIjo9KJJ56o9d6xekn2eGpjNJzY7u7tA051pgtUmuJhY73g&_nc_ohc=04fwNAakqNgAX8rBtot&_nc_ht=scontent.fhan20-1.fna&oh=03_AdRTWhWz8bnPVGTh_Bfc3cqYpPGITO3KZjl4iuzXvVdbOQ&oe=662F7B87)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/349711200_208609002035396_3463631346312202008_n.jpg?stp=cp6_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH9REDHl43QtDxd9rDqyQw-7fMTH3SrGFLt8xMfdKsYUs7Z4Me486TgrDKfduB0uWGSqnpZHT2k5SgC_H9YaYM_&_nc_ohc=rHWM4NKhBzUAX-RdnRJ&_nc_ht=scontent.fhan20-1.fna&oh=00_AfDCh6BuDKC8ukasp9m571qWkrpYjd3gsVujkfocZLeIcQ&oe=660DD13A)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/270007798_709696623358146_5115145353636793812_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGSBr0IUw0RAwzpSMtiFJuucsSgkZmDaGFyxKCRmYNoYQQaWLEss2PYHyF6STLcGa7GXJJdHxoQxBNfCwAEQtGv&_nc_ohc=yy2ACb_RsWUAX8DT5iK&_nc_ht=scontent.fhan2-3.fna&oh=00_AfC5qjXSPT5FR-ezMGwRRbpP0_TNeqfLhgvyy-gZ2zczXw&oe=660DEF9B)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan2-4.fna.fbcdn.net/v/t1.15752-9/433496980_1134809084215264_2541288810827461356_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEjWlcVOogaTMIXyICWPHFGRwytfDgFrddHDK18OAWt11sLyEv-xGIMjUgn2-Givm0EVEOEVeO1tD0Y4EbiuHCk&_nc_ohc=llUYJX6qhT4AX-RO811&_nc_ht=scontent.fhan2-4.fna&oh=03_AdSxgrBCa2E9LEohDgwWbS2pGGtmKWCsuQnGPYm7a5NKJg&oe=662F6507)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan20-1.fna.fbcdn.net/v/t1.6435-9/197774389_596902527970890_5414256398101889371_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeG4AptERiAf-9NAIapJgaRXnSRc8V1ilAqdJFzxXWKUCpuKC1_cRFkWbLSdFUMXMcGrG2yp9-x9zgOpba4srwbf&_nc_ohc=VyaMLSvWN_UAX8I0hJN&_nc_ht=scontent.fhan20-1.fna&oh=00_AfCtZBFaTyoLX_hyIri7FEvzxqLQ0d2GNUqgEc_YhWUUBQ&oe=662F8B37)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan2-4.fna.fbcdn.net/v/t39.30808-6/318563411_935288654132274_6727556118060100823_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFssclkmWt_GQ5vtfb-kr4hoSZ_dG79rcChJn90bv2twJia1jZzYm_bsFrw0pCarMBV7DGt4NBhf-yB1oiZtE5J&_nc_ohc=sJHaUx9DOMwAX_m9Qme&_nc_ht=scontent.fhan2-4.fna&oh=00_AfDyVGg7zxFIDhQ3AK0HEXgf3wwKciNASYr5dgffP3AMqw&oe=660DC2D9)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan20-1.fna.fbcdn.net/v/t39.30808-6/318302171_935288857465587_7540826051998284685_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFp2LOuZsXoLnV7dTAIlHKRVFkoMCcDjDRUWSgwJwOMNNMamG_xmOE3D40TR7sqLavDc0b2P4aaDEQZSCf6qno7&_nc_ohc=RWQV3qFV5GYAX_X4M66&_nc_ht=scontent.fhan20-1.fna&oh=00_AfDiORYkSK24QWOh1e3Pwg84byVKDCRwLbGA8zJRgKjxfA&oe=660DDD35)"></div>
+      <div class="item" tabindex="0" style="background-image: url(https://scontent.fhan2-5.fna.fbcdn.net/v/t1.15752-9/433946463_1111427480010469_3056097830730443364_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGiHgIDx9I_zlnqm9P7kR79ZqrFRZYoK5dmqsVFligrlxZjx8c1TM9W9ysaRwFhagrdO0e-x0_V8WP-0Br6y_No&_nc_ohc=4QOCd1MqXY0AX_xQRub&_nc_ht=scontent.fhan2-5.fna&oh=03_AdShVMLMo4e-M0xi56T0wNKZPc6DaWzruJvI7r-rdRA0jQ&oe=662F6B05)"></div>
+      </div>
+        
+      </div>
+<script src="script.js"></script>
+<script async src="https://ga.jspm.io/npm:es-module-shims@1.6.3/dist/es-module-shims.js" crossorigin="anonymous"></script>
+<script type="importmap">
+  {
+    "imports": {      
+      "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+    }
+  }
+</script>
+<script>
+    const img = document.getElementById("img1");
+    document.addEventListener("DOMContentLoaded", function() {
+        const text = document.getElementById("animated-text");
+        
+        function displayText(content) {
+          return new Promise(resolve => {
+            text.textContent = "";
+            for (let i = 0; i < content.length; i++) {
+              setTimeout(function() {
+                text.textContent += content[i];
+                text.style.opacity = 1;
+                if (i === content.length - 1) {
+                  resolve();
+                }
+              }, 100 * i);
+            }
+          });
+        }
+      
+        function fadeOutText() {
+          return new Promise(resolve => {
+            let opacity = 1;
+            const interval = setInterval(function() {
+              if (opacity <= 0) {
+                clearInterval(interval);
+                resolve();
+              } else {
+                opacity -= 0.05;
+                text.style.opacity = opacity;
+              }
+            }, 50);
+          });
+        }
+      
+        async function performTextAnimation(textContent) {
+          await displayText(textContent);
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          await fadeOutText();
+        }
+      
+        async function showNewText(newText) {
+          await performTextAnimation(newText);
+        }
+      
+        const texts = [
+          "Chúc bạn thượng lộ bình an, gặp nhiều may mắn trên con đường sắp tới. Mình tin tưởng rằng bạn sẽ thành công và đạt được những điều mà bạn mong muốn. Hãy luôn giữ liên lạc và cập nhật cho mình về cuộc sống của bạn nhé. Mình sẽ luôn dõi theo và ủng hộ bạn.",
+          "Chúc bạn:",
+          "Mọi điều suôn sẻ, thuận lợi.",
+          "Sức khỏe dồi dào, luôn tràn đầy năng lượng.",
+          "Học tập và làm việc hiệu quả.",
+          "Gặp được nhiều người tốt và có nhiều trải nghiệm thú vị.",
+          "Luôn giữ tinh thần lạc quan, vui vẻ và hạnh phúc.",
+          "mình sẽ nhớ bạn nhiều lắm :(( "
+        ];
+      
+        async function changeTexts() {
+          for (let i = 0; i < texts.length; i++) {
+            await showNewText(texts[i]);
+          }
+          // Hiển thị hình ảnh sau khi văn bản đã xuất hiện hết
+          img.style.display = "flex";
+          
+
+          // Chờ 3 giây trước khi ẩn hình ảnh
+          // Cỡ chữ của dòng cuối cùng tăng lên
+          text.classList.add("last-line");
+        }
+      
+        changeTexts();
+      });
+      window.onload = function() {
+        var video = document.getElementById("myVideo");
+        video.style.display = "none"; // Hiển thị iframe khi trang web được tải
+      };
+      
+</script>
+</body>
+</html>
